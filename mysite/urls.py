@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from home.views import post_list
+from blog.views import post_list
 
 urlpatterns = [
+
+    #path('admin/', admin.site.urls),#admin ile başlayan her url için ona uyan bir view bulur.
+
     url(r'^admin/', admin.site.urls),
 
     url(r'^$', post_list),
 
-    url(r'^blog/', include('blog.urls')),
+    #url(r'^$/', include('blog.urls')), #django artık anasayfaya gelen herşeyi blog.urls e yönlendirecek ve oradaki yönergelere bakacak
 ]

@@ -1,20 +1,30 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from blog.models import Post
-
+from .models import Post
+from django.utils import timezone
 # Create your views here.
 
-def post_index(request):
-	posts= Post.objects.all()
-	return render(request, '/index.html', {'posts': posts})
+def post_list(request):
+    posts=Post.objects.all()
+	#posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/post_list.html', {'posts':posts})
 
-def post_detail(request):
-	return HttpResponse('Burası detail index sayfası')
 
-def post_create(request):
-	return HttpResponse('Burası create index sayfası')
 
-def post_update(request):
-	return HttpResponse('Burası update index sayfası')
 
-def post_delete(request):
-	return HttpResponse('Burası delete index sayfası')
+
+#def post_index(request):
+#	posts= Post.objects.all()
+#	return render(request, '/index.html', {'posts': posts})
+
+#def post_detail(request):
+#	return HttpResponse('Burası detail index sayfası')
+
+#def post_create(request):
+#	return HttpResponse('Burası create index sayfası')
+
+#def post_update(request):
+#	return HttpResponse('Burası update index sayfası')
+
+#def post_delete(request):
+#	return HttpResponse('Burası delete index sayfası')

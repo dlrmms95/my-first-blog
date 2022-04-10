@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 
-def post_list(request):
+def home_view(request):
 	#if request.user.is_authenticated():
 	 #   context = {
 	  #     'isim': 'Barış',
@@ -11,4 +11,4 @@ def post_list(request):
     
 
 
-	return render(request,'blog/post_list.html', {})
+	return render(request,'home.html', {'isim':'Barış'})
