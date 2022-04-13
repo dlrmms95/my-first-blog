@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from blog.views import post_list
+from blog.views import post_list, post_detail
+
+
 
 urlpatterns = [
 
@@ -24,6 +26,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^$', post_list),
+    url(r'^post/(?P<pk>\d+)/$', post_detail, name='post_detail'),
+    #url('post/<int:pk>/', post_detail, name='post_detail'),
 
     #url(r'^$/', include('blog.urls')), #django artık anasayfaya gelen herşeyi blog.urls e yönlendirecek ve oradaki yönergelere bakacak
 ]
